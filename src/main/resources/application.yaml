@@ -13,3 +13,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+dolar:
+  api:
+    url: https://dolarapi.com/v1/dolares/blue

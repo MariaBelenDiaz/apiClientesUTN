@@ -1,0 +1,378 @@
+{
+  "info": {
+    "_postman_id": "56edae02-c30a-4971-aaa2-c83e17225281",
+    "name": "Diplomatura UTN",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53993769",
+    "_collection_link": "https://go.postman.co/collection/53993769-56edae02-c30a-4971-aaa2-c83e17225281?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Crear Clientes",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "const fechaHoy = new Date();\r",
+              "\r",
+              "const year = fechaHoy.getFullYear();\r",
+              "\r",
+              "const month = String(fechaHoy.getMonth() + 1).padStart(2, '0');\r",
+              "\r",
+              "const day = String(fechaHoy.getDate()).padStart(2, '0');\r",
+              "\r",
+              "const fecha = `${year}-${month}-${day}`;\r",
+              "\r",
+              "pm.variables.set(\"fechaAlta\", fecha);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nombre\": \"Belen77\",\n    \"apellidoRazonSocial\": \"Diaz\",\n    \"documentoCuit\": \"223434553\",\n    \"direccion\": \"Rojas 1234\",\n    \"telefono\": \"11223344\",\n    \"email\": \"belen123@gmail.com\",\n    \"tipoCliente\": null,\n    \"activo\": false,\n    \"saldoPendiente\": 0.0,\n    \"fechaAlta\": \"{{fechaAlta}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/agregar",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "agregar"
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": []
+    },
+    {
+      "name": "Consultar Clientes",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Belen1\",\r\n  \"apellidoRazonSocial\": \"Pérez\",\r\n  \"email\": \"juan@gmail.com\",\r\n  \"telefono\": \"123456789\",\r\n  \"direccion\": \"Calle 123\",\r\n  \"documentoCuit\": \"20333444556\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}",
+          "host": [
+            "{{base_url}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Consultar Clientes por ID",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Belen1\",\r\n  \"apellidoRazonSocial\": \"Pérez\",\r\n  \"email\": \"juan@gmail.com\",\r\n  \"telefono\": \"123456789\",\r\n  \"direccion\": \"Calle 123\",\r\n  \"documentoCuit\": \"20333444556\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar Clientes",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Belen33\",\r\n    \"apellidoRazonSocial\": \"Diaz\",\r\n    \"documentoCuit\": \"223434553\",\r\n    \"direccion\": \"Rojas 1234\",\r\n    \"telefono\": \"11223344\",\r\n    \"email\": \"belen123@gmail.com\",\r\n    \"tipoCliente\": null,\r\n    \"activo\": false,\r\n    \"saldoPendiente\": 0.0,\r\n    \"fechaAlta\": null\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/2",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Borrar Cliente",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Belen1\",\r\n  \"apellidoRazonSocial\": \"Pérez\",\r\n  \"email\": \"juan@gmail.com\",\r\n  \"telefono\": \"123456789\",\r\n  \"direccion\": \"Calle 123\",\r\n  \"documentoCuit\": \"20333444556\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/7",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "7"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Consultar Cotización (externa)",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://dolarapi.com/v1/dolares/blue",
+          "protocol": "https",
+          "host": [
+            "dolarapi",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "dolares",
+            "blue"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Consultar Cotización Compra (app)",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/clientes/cotizacion/compra",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clientes",
+            "cotizacion",
+            "compra"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crear Cuentas",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const fechaHoy = new Date();\r",
+              "\r",
+              "const year = fechaHoy.getFullYear();\r",
+              "\r",
+              "const month = String(fechaHoy.getMonth() + 1).padStart(2, '0');\r",
+              "\r",
+              "const day = String(fechaHoy.getDate()).padStart(2, '0');\r",
+              "\r",
+              "const fecha = `${year}-${month}-${day}`;\r",
+              "\r",
+              "pm.variables.set(\"fechaHoy\", fecha);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "    {\r\n        \"clientId\": {\r\n            \"id\": 1,\r\n            \"nombre\": \"Belen\",\r\n            \"apellidoRazonSocial\": \"Diaz\",\r\n            \"documentoCuit\": \"223434553\",\r\n            \"direccion\": \"Rojas 1234\",\r\n            \"telefono\": \"11223344\",\r\n            \"email\": \"belen123@gmail.com\",\r\n            \"tipoCliente\": null,\r\n            \"activo\": false,\r\n            \"saldoPendiente\": 0.0,\r\n            \"fechaAlta\": null\r\n        },\r\n        \"numeroCuenta\": \"2\",\r\n        \"moneda\": \"USD\",\r\n        \"saldo\": 10500.00,\r\n        \"activo\": true,\r\n        \"fechaCreacion\": \"2026-06-07\",\r\n        \"fechaModificacion\": null\r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/cuentas/agregar",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cuentas",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Consultar Cuentas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/cuentas/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cuentas",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Borrar Cuentas",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/cuentas/4",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cuentas",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Consultar Cuentas Pesificadas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/cuentas/pesificadas",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cuentas",
+            "pesificadas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar Cuentas",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "    {\r\n        \"clientId\": {\r\n            \"id\": 1,\r\n            \"nombre\": \"Belen\",\r\n            \"apellidoRazonSocial\": \"Diaz\",\r\n            \"documentoCuit\": \"223434553\",\r\n            \"direccion\": \"Rojas 1234\",\r\n            \"telefono\": \"11223344\",\r\n            \"email\": \"belen123@gmail.com\",\r\n            \"tipoCliente\": null,\r\n            \"activo\": false,\r\n            \"saldoPendiente\": 0.0,\r\n            \"fechaAlta\": null\r\n        },\r\n        \"numeroCuenta\": \"2\",\r\n        \"moneda\": \"ARS\",\r\n        \"saldo\": 770000,\r\n        \"activo\": true,\r\n        \"fechaCreacion\": \"2026-06-07\",\r\n        \"fechaModificacion\": null\r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/cuentas/2",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cuentas",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

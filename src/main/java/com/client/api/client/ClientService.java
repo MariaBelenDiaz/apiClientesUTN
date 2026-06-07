@@ -1,5 +1,8 @@
-package com.client.api;
+package com.client.api.client;
 
+import com.client.api.account.Account;
+import com.client.api.dolar.Dolar;
+import com.client.api.dolar.DolarClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,24 +14,27 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public List<Client>  getClients() {
+    @Autowired
+    private DolarClient dolarClient;
+
+    public List<Client> getClients() {
         return clientRepository.findAll();
     }
 
-    public Client getClientById(Long id){
+    public Client getClientById(Long id) {
         return clientRepository.getReferenceById(id);
     }
 
-
-    public Client addClient(Client addedClient){
+    public Client addClient(Client addedClient) {
         return clientRepository.save(addedClient);
     }
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         clientRepository.deleteById(id);
     }
 
-    public Client updateClient(Long id, Client updatedClient){
+    public Client updateClient(Long id, Client updatedClient) {
+
         Client existingClient = clientRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
 
@@ -40,6 +46,10 @@ public class ClientService {
         existingClient.setDocumentoCuit(updatedClient.getDocumentoCuit());
 
         return clientRepository.save(existingClient);
+    }
+
+    public Dolar getCotizacion() {
+        return dolarClient.getDolar();
     }
 
 

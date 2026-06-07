@@ -1,7 +1,7 @@
 package com.client.api;
 
-import com.client.api.Client;
-import com.client.api.ClientRepository;
+import com.client.api.client.Client;
+import com.client.api.client.ClientRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
